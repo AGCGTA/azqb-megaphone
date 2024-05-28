@@ -8,6 +8,10 @@ local function awaitLoadAnimDict(dict)
 end
 
 local function hasMegaphone()
+  local vehId = GetVehiclePedIsIn(PlayerPedId(), false)
+  if vehId ~= 0 then
+    return GetVehicleClass(vehId) == 18
+  end
   for _, item in pairs(QBCore.Functions.GetPlayerData().items) do
     if item.name == "megaphone" then
       return true
